@@ -1,0 +1,25 @@
+'use strict';
+const { assign, PALETTE } = require('../lib/assign.js');
+const checks = []; const expect = (l, c) => { checks.push(!!c); console.log(c ? '✓' : '✗', l); };
+const S = (...p) => p.map((project, i) => ({ key: 'k' + i, project }));
+const rot = ['bober', 'mochi', 'capi'];
+let a = assign(S('mi-app', 'api', 'web'), { by: 'pet', rotation: rot, mainPet: 'bober' });
+expect('pet: tres sesiones, tres mascotas distintas', new Set([...a.values()].map((x) => x.pet)).size === 3);
+expect('pet: sin repetir no se tiñe', [...a.values()].every((x) => !x.tint));
+a = assign(S('a', 'b', 'c', 'd'), { by: 'pet', rotation: rot, mainPet: 'bober' });
+expect('pet: la cuarta repite mascota y se tiñe para distinguirse', [...a.values()].filter((x) => x.tint).length === 1);
+a = assign(S('a', 'b', 'c'), { by: 'color', rotation: rot, mainPet: 'bober' });
+expect('color: todas la mascota principal, colores distintos', [...a.values()].every((x) => x.pet === 'bober' && x.tint)
+  && new Set([...a.values()].map((x) => x.color)).size === 3);
+const one = assign(S('mi-app'), { by: 'mix', rotation: rot, mainPet: 'bober' }).get('k0');
+const again = assign(S('otro', 'mi-app').reverse().map((s, i) => ({ ...s, key: 'z' + i })), { by: 'mix', rotation: rot, mainPet: 'bober' });
+expect('estable: mi-app recibe lo mismo otro día', [...again.values()].find((x) => x.label === 'mi-app').pet === one.pet);
+a = assign(S('mi-app'), { by: 'mix', rotation: rot, mainPet: 'bober', pins: { 'mi-app': { pet: 'capi', color: 4 } } }).get('k0');
+expect('fijado a mano: manda el pin', a.pet === 'capi' && a.color === 4 && a.tint);
+a = assign(S('mi-app', 'mi-app'), { by: 'mix', rotation: rot, mainPet: 'bober' });
+expect('mismo proyecto dos veces: "mi-app · 2"', [...a.values()].map((x) => x.label).join() === 'mi-app,mi-app · 2');
+const keep = assign(S('a', 'b'), { by: 'mix', rotation: rot, mainPet: 'bober' });
+const later = assign([{ key: 'new', project: 'zzz' }, ...S('a', 'b')], { by: 'mix', rotation: rot, mainPet: 'bober' }, keep);
+expect('llega una nueva: las que ya estaban no cambian', later.get('k0').pet === keep.get('k0').pet && later.get('k1').color === keep.get('k1').color);
+expect('paleta de 8', PALETTE.length === 8);
+if (checks.includes(false)) process.exit(1); console.log('todo bien');

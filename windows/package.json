@@ -1,0 +1,57 @@
+{
+  "name": "compa",
+  "productName": "Compa",
+  "version": "2.0.0",
+  "description": "Mascota de escritorio que te cuenta qué hace Claude Code",
+  "main": "main.js",
+  "author": "juli",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/run.js && node test/agents.js && node test/compact.js && node test/feeds.js && node test/assign.js && node test/spots.js && node test/desktop.js && node test/desktop-flow.js && node test/hidden.js && node test/presence.js",
+    "dist": "electron-builder --win zip --x64"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.juli.compa",
+    "productName": "Compa",
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "hook.js",
+      "lib/**"
+    ],
+    "extraResources": [
+      {
+        "from": "../pets",
+        "to": "pets",
+        "filter": [
+          "**/*",
+          "!chihiro/**",
+          "!chihiro"
+        ]
+      },
+      {
+        "from": "hook.js",
+        "to": "hook.js"
+      },
+      {
+        "from": "../scenes",
+        "to": "scenes"
+      }
+    ],
+    "win": {
+      "target": [
+        "zip"
+      ],
+      "signAndEditExecutable": false
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

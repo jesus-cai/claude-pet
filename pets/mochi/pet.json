@@ -1,0 +1,8 @@
+{
+  "id": "mochi",
+  "displayName": "Mochi",
+  "description": "Una bolita con hojita que vigila a Claude.",
+  "spriteVersionNumber": 2,
+  "spritesheetPath": "spritesheet.webp",
+  "pixelated": true
+}

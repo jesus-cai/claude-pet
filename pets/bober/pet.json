@@ -1,0 +1,41 @@
+{
+  "id": "bober",
+  "displayName": "Bober",
+  "description": "Un castor que juzga en silencio todo lo que haces.",
+  "spriteVersionNumber": 2,
+  "spritesheetPath": "spritesheet.webp",
+  "pixelated": true,
+  "talkSheet": "talk.webp",
+  "talkFrameMs": 120,
+  "reactions": {
+    "done": "waving",
+    "drag": "jumping",
+    "wave": "waving",
+    "error": "failed",
+    "work": "running"
+  },
+  "introSheets": {
+    "running": "laptop-out.webp"
+  },
+  "introFrameMs": 160,
+  "lines": {
+    "start": [
+      "fine…",
+      "if I must…",
+      "sigh…",
+      "ugh. ok…"
+    ],
+    "done": [
+      "finally.",
+      "there. happy?",
+      "done. you're welcome.",
+      "hmph. it's done.",
+      "took long enough."
+    ],
+    "error": [
+      "of course it broke.",
+      "called it.",
+      "unsurprising."
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "playa",
+  "name": "Playa",
+  "size": [
+    360,
+    150
+  ],
+  "floor": 138,
+  "petHeight": 40,
+  "pixelated": true,
+  "walk": [
+    14,
+    346
+  ],
+  "door": 26,
+  "desks": [
+    82,
+    128,
+    174,
+    220,
+    266
+  ],
+  "rest": 345,
+  "window": 174
+}

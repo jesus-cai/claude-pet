@@ -1,0 +1,8 @@
+{
+  "id": "chihiro",
+  "displayName": "Chihiro",
+  "description": "Rig por capas (formato antiguo): foto recortada y versión pixel art.",
+  "kind": "rig",
+  "layers": "layers",
+  "pixelLayers": "layers-px"
+}

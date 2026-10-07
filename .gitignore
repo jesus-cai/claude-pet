@@ -1,0 +1,13 @@
+# compilados y empaquetados
+build/
+windows/dist/
+windows/node_modules/
+
+# macOS / editores
+.DS_Store
+*.swp
+.vscode/
+
+# temporales
+*.tmp
+*.tgz
